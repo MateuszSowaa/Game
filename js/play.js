@@ -1,36 +1,32 @@
-var cursors;
-var player;
-
 var playState = {
 
-	preload: function(){
-		game.load.image('asset', 'assets/asset.png');
-	},
-
 	create: function() {
-		player = game.add.sprite(100, 100, 'asset');
+		this.player = game.add.sprite(100, 100, 'asset');
 
-		cursors = game.input.keyboard.createCursorKeys();
+		this.cursors = game.input.keyboard.createCursorKeys();
 	},
 
 	update: function() {
 		
-		if (cursors.left.isDown){
-	        player.x -= 1;
+		if (this.cursors.left.isDown){
+	        this.player.x -= 1;
 	    } 
 
-	    if (cursors.right.isDown){
-	        player.x += 1;
+	    if (this.cursors.right.isDown){
+	        this.player.x += 1;
 	    } 
 
-	    if (cursors.down.isDown){
-	        player.y += 1;
+	    if (this.cursors.down.isDown){
+	        this.player.y += 1;
 	    }  
 
-	    if (cursors.up.isDown){
-	        player.y -= 1;
+	    if (this.cursors.up.isDown){
+	        this.player.y -= 1;
 	    }
 	    
-	}
+        if (this.player > 400) {
+            game.state.start('win')
+        }
+	},
 
 };
